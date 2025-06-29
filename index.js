@@ -42,18 +42,18 @@ app.post("/groq", async (req, res) => {
       }
     );
 
-    // ✅ Safe access and fallback
     const reply = response?.data?.choices?.[0]?.message?.content;
+    console.log("🧠 Groq Reply:", reply); // 🔍 Debug log for Render
 
     if (reply) {
       res.status(200).json({ reply });
     } else {
-      console.error("Groq API returned no valid reply", response.data);
+      console.error("⚠️ Groq API returned no valid reply", response.data);
       res.status(500).json({ error: "AI didn't respond. Try again later." });
     }
 
   } catch (err) {
-    console.error("Groq Error:", err.response?.data || err.message);
+    console.error("🔥 Groq Error:", err.response?.data || err.message);
     res.status(500).json({ error: "AI didn't respond. Try again later." });
   }
 });
@@ -63,5 +63,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
