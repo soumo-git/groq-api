@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // ✅ HARDCODED Groq API Key
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = "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";
 
 app.post("/groq", async (req, res) => {
   try {
